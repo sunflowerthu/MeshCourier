@@ -1,4 +1,4 @@
-package com.sunflowerthu.meshcourier.ui.theme
+package com.sunflowerthu.meshcourier.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 
