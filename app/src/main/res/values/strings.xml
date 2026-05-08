@@ -1,116 +1,116 @@
 <resources>
-    <string name="app_name">MeshCourier</string>
+    <string name="app_name" translatable="false">MeshCourier</string>
 
     <!-- Общее -->
-    <string name="common_ok">OK</string>
-    <string name="common_save">Сохранить</string>
-    <string name="common_delete">Удалить</string>
-    <string name="common_cancel">Отмена</string>
-    <string name="common_open">Открыть</string>
-    <string name="common_close">Закрыть</string>
+    <string name="common_ok" translatable="false">OK</string>
+    <string name="common_save" translatable="false">Сохранить</string>
+    <string name="common_delete" translatable="false">Удалить</string>
+    <string name="common_cancel" translatable="false">Отмена</string>
+    <string name="common_open" translatable="false">Открыть</string>
+    <string name="common_close" translatable="false">Закрыть</string>
 
     <!-- Нижняя навигация -->
-    <string name="nav_chats">Чаты</string>
-    <string name="nav_nearby">Рядом</string>
-    <string name="nav_settings">Настройки</string>
+    <string name="nav_chats" translatable="false">Чаты</string>
+    <string name="nav_nearby" translatable="false">Рядом</string>
+    <string name="nav_settings" translatable="false">Настройки</string>
 
     <!-- Экран "Чаты" -->
-    <string name="conversations_title">Чаты</string>
-    <string name="conversations_new_chat_cd">Новый чат</string>
-    <string name="conversations_empty">Нет сообщений</string>
-    <string name="conversations_invalid_qr">Неверный QR-код</string>
-    <string name="conversations_processing">Расшифровывается…</string>
-    <string name="conversations_attachment_image_default">Изображение</string>
-    <string name="conversations_attachment_file_default">Файл</string>
+    <string name="conversations_title" translatable="false">Чаты</string>
+    <string name="conversations_new_chat_cd" translatable="false">Новый чат</string>
+    <string name="conversations_empty" translatable="false">Нет сообщений</string>
+    <string name="conversations_invalid_qr" translatable="false">Неверный QR-код</string>
+    <string name="conversations_processing" translatable="false">Расшифровывается…</string>
+    <string name="conversations_attachment_image_default" translatable="false">Изображение</string>
+    <string name="conversations_attachment_file_default" translatable="false">Файл</string>
 
     <!-- Диалоговое окно "добавить новый чат" -->
-    <string name="new_chat_dialog_title">Новый чат</string>
-    <string name="new_chat_node_id_label">Node ID собеседника</string>
-    <string name="new_chat_scan_qr">Сканировать QR-код</string>
-    <string name="new_chat_qr_prompt">Наведите камеру на QR-код</string>
-    <string name="new_chat_contacts_section">Контакты</string>
+    <string name="new_chat_dialog_title" translatable="false">Новый чат</string>
+    <string name="new_chat_node_id_label" translatable="false">Node ID собеседника</string>
+    <string name="new_chat_scan_qr" translatable="false">Сканировать QR-код</string>
+    <string name="new_chat_qr_prompt" translatable="false">Наведите камеру на QR-код</string>
+    <string name="new_chat_contacts_section" translatable="false">Контакты</string>
 
     <!-- Экран чата -->
-    <string name="chat_back_cd">Назад</string>
-    <string name="chat_rename_cd">Переименовать</string>
-    <string name="chat_menu_cd">Меню</string>
-    <string name="chat_menu_delete_contact">Удалить контакт</string>
-    <string name="chat_delete_contact_title">Удалить контакт</string>
-    <string name="chat_delete_contact_message">Имя контакта будет удалено. История переписки сохранится.</string>
-    <string name="chat_encrypted_cd">Зашифровано</string>
-    <string name="chat_exchange_keys_cd">Обменяться ключами</string>
-    <string name="chat_unencrypted_warning">Сообщения не зашифрованы — нажмите на замок, чтобы обменяться ключами</string>
-    <string name="chat_message_placeholder">Сообщение</string>
-    <string name="chat_send_cd">Отправить</string>
-    <string name="chat_attach_file_cd">Прикрепить файл</string>
-    <string name="chat_image_default_cd">Изображение</string>
-    <string name="chat_file_default">file</string>
-    <string name="chat_rename_dialog_title">Имя контакта</string>
-    <string name="chat_rename_dialog_label">Имя</string>
-    <string name="chat_hop_count">%1$d хоп</string>
+    <string name="chat_back_cd" translatable="false">Назад</string>
+    <string name="chat_rename_cd" translatable="false">Переименовать</string>
+    <string name="chat_menu_cd" translatable="false">Меню</string>
+    <string name="chat_menu_delete_contact" translatable="false">Удалить контакт</string>
+    <string name="chat_delete_contact_title" translatable="false">Удалить контакт</string>
+    <string name="chat_delete_contact_message" translatable="false">Имя контакта будет удалено. История переписки сохранится.</string>
+    <string name="chat_encrypted_cd" translatable="false">Зашифровано</string>
+    <string name="chat_exchange_keys_cd" translatable="false">Обменяться ключами</string>
+    <string name="chat_unencrypted_warning" translatable="false">Сообщения не зашифрованы — нажмите на замок, чтобы обменяться ключами</string>
+    <string name="chat_message_placeholder" translatable="false">Сообщение</string>
+    <string name="chat_send_cd" translatable="false">Отправить</string>
+    <string name="chat_attach_file_cd" translatable="false">Прикрепить файл</string>
+    <string name="chat_image_default_cd" translatable="false">Изображение</string>
+    <string name="chat_file_default" translatable="false">file</string>
+    <string name="chat_rename_dialog_title" translatable="false">Имя контакта</string>
+    <string name="chat_rename_dialog_label" translatable="false">Имя</string>
+    <string name="chat_hop_count" translatable="false">%1$d хоп</string>
 
     <!-- Snackbar -->
-    <string name="chat_event_keys_request_sent">Запрос на обмен ключами отправлен</string>
-    <string name="chat_event_keys_request_failed">Не удалось отправить запрос: %1$s</string>
-    <string name="chat_event_file_too_large">Файл слишком большой (максимум %1$d КБ)</string>
-    <string name="chat_event_file_send_error">Ошибка отправки файла: %1$s</string>
-    <string name="chat_event_file_read_error">Не удалось прочитать файл</string>
-    <string name="chat_event_no_app_for_file">Нет приложения для открытия этого файла</string>
-    <string name="chat_event_open_file_error">Не удалось открыть файл: %1$s</string>
+    <string name="chat_event_keys_request_sent" translatable="false">Запрос на обмен ключами отправлен</string>
+    <string name="chat_event_keys_request_failed" translatable="false">Не удалось отправить запрос: %1$s</string>
+    <string name="chat_event_file_too_large" translatable="false">Файл слишком большой (максимум %1$d КБ)</string>
+    <string name="chat_event_file_send_error" translatable="false">Ошибка отправки файла: %1$s</string>
+    <string name="chat_event_file_read_error" translatable="false">Не удалось прочитать файл</string>
+    <string name="chat_event_no_app_for_file" translatable="false">Нет приложения для открытия этого файла</string>
+    <string name="chat_event_open_file_error" translatable="false">Не удалось открыть файл: %1$s</string>
 
     <!-- Экран "Рядом" -->
-    <string name="nearby_title">Рядом</string>
-    <string name="nearby_stat_nodes">Узлов</string>
-    <string name="nearby_stat_sent">Отправлено</string>
-    <string name="nearby_stat_relayed">Ретранслировано</string>
-    <string name="nearby_empty">Нет устройств рядом</string>
-    <string name="nearby_status_available">доступен</string>
-    <string name="nearby_open_chat">Открыть чат</string>
-    <string name="nearby_exchange_keys">Обменяться ключами</string>
-    <string name="nearby_last_seen_just_now">только что</string>
-    <string name="nearby_last_seen_minutes">%1$d мин назад</string>
-    <string name="nearby_last_seen_hours">%1$d ч назад</string>
+    <string name="nearby_title" translatable="false">Рядом</string>
+    <string name="nearby_stat_nodes" translatable="false">Узлов</string>
+    <string name="nearby_stat_sent" translatable="false">Отправлено</string>
+    <string name="nearby_stat_relayed" translatable="false">Ретранслировано</string>
+    <string name="nearby_empty" translatable="false">Нет устройств рядом</string>
+    <string name="nearby_status_available" translatable="false">доступен</string>
+    <string name="nearby_open_chat" translatable="false">Открыть чат</string>
+    <string name="nearby_exchange_keys" translatable="false">Обменяться ключами</string>
+    <string name="nearby_last_seen_just_now" translatable="false">только что</string>
+    <string name="nearby_last_seen_minutes" translatable="false">%1$d мин назад</string>
+    <string name="nearby_last_seen_hours" translatable="false">%1$d ч назад</string>
 
     <!-- Экран настроек -->
-    <string name="settings_title">Настройки</string>
-    <string name="settings_my_node_id">Мой Node ID</string>
-    <string name="settings_copy">Копировать</string>
-    <string name="settings_contacts">Контакты</string>
-    <string name="settings_keypair_title">Ключевая пара ГОСТ</string>
-    <string name="settings_keys_generated">Ключи сгенерированы</string>
-    <string name="settings_keys_missing">Ключи не созданы</string>
-    <string name="settings_generate_keys">Сгенерировать ключи</string>
-    <string name="settings_keys_error_title">Ошибка генерации ключей</string>
-    <string name="qr_code_cd">QR-код</string>
+    <string name="settings_title" translatable="false">Настройки</string>
+    <string name="settings_my_node_id" translatable="false">Мой Node ID</string>
+    <string name="settings_copy" translatable="false">Копировать</string>
+    <string name="settings_contacts" translatable="false">Контакты</string>
+    <string name="settings_keypair_title" translatable="false">Ключевая пара ГОСТ</string>
+    <string name="settings_keys_generated" translatable="false">Ключи сгенерированы</string>
+    <string name="settings_keys_missing" translatable="false">Ключи не созданы</string>
+    <string name="settings_generate_keys" translatable="false">Сгенерировать ключи</string>
+    <string name="settings_keys_error_title" translatable="false">Ошибка генерации ключей</string>
+    <string name="qr_code_cd" translatable="false">QR-код</string>
 
     <!-- Экран контактов -->
-    <string name="contacts_title">Контакты</string>
-    <string name="contacts_empty">Нет сохранённых контактов</string>
-    <string name="contacts_delete_dialog_title">Удалить контакт</string>
-    <string name="contacts_delete_dialog_message">Удалить «%1$s»? История переписки сохранится.</string>
+    <string name="contacts_title" translatable="false">Контакты</string>
+    <string name="contacts_empty" translatable="false">Нет сохранённых контактов</string>
+    <string name="contacts_delete_dialog_title" translatable="false">Удалить контакт</string>
+    <string name="contacts_delete_dialog_message" translatable="false">Удалить «%1$s»? История переписки сохранится.</string>
 
-    <!-- MainActivity диалоги -->
-    <string name="error_action_required">Необходимо действие</string>
-    <string name="error_bluetooth_disabled">Для работы приложения необходимо включить Bluetooth.</string>
-    <string name="error_enable">Включить</string>
-    <string name="error_permissions_required">Для работы приложения необходимы разрешения Bluetooth.\nОткройте настройки и предоставьте доступ.</string>
-    <string name="error_open_settings">Открыть настройки</string>
-    <string name="error_bluetooth_title">Ошибка Bluetooth</string>
-    <string name="error_bluetooth_settings">Настройки Bluetooth</string>
+    <!-- MainActivity -->
+    <string name="error_action_required" translatable="false">Необходимо действие</string>
+    <string name="error_bluetooth_disabled" translatable="false">Для работы приложения необходимо включить Bluetooth.</string>
+    <string name="error_enable" translatable="false">Включить</string>
+    <string name="error_permissions_required" translatable="false">Для работы приложения необходимы разрешения Bluetooth.\nОткройте настройки и предоставьте доступ.</string>
+    <string name="error_open_settings" translatable="false">Открыть настройки</string>
+    <string name="error_bluetooth_title" translatable="false">Ошибка Bluetooth</string>
+    <string name="error_bluetooth_settings" translatable="false">Настройки Bluetooth</string>
 
     <!-- BLE ошибки -->
-    <string name="ble_error_no_advertiser">Устройство не поддерживает BLE-адвертайзинг. Убедитесь, что Bluetooth включён и повторите запуск.</string>
-    <string name="ble_error_no_scanner">Сканер BLE недоступен. Проверьте, включён ли Bluetooth.</string>
+    <string name="ble_error_no_advertiser" translatable="false">Устройство не поддерживает BLE-адвертайзинг. Убедитесь, что Bluetooth включён и повторите запуск.</string>
+    <string name="ble_error_no_scanner" translatable="false">Сканер BLE недоступен. Проверьте, включён ли Bluetooth.</string>
 
     <!-- Уведомления Mesh-сервисов -->
-    <string name="service_channel_name">MeshCourier</string>
-    <string name="service_channel_description">Фоновая работа mesh-сети</string>
-    <string name="msg_channel_name">Сообщения</string>
-    <string name="msg_channel_description">Входящие сообщения</string>
-    <string name="service_notification_title">MeshCourier</string>
-    <string name="service_notification_text">Mesh-сеть активна</string>
-    <string name="service_notification_stop">Остановить</string>
-    <string name="msg_notification_default">Новое сообщение</string>
-    <string name="msg_notification_image">📷 %1$s</string>
-    <string name="msg_notification_file">📎 %1$s</string>
+    <string name="service_channel_name" translatable="false">MeshCourier</string>
+    <string name="service_channel_description" translatable="false">Фоновая работа mesh-сети</string>
+    <string name="msg_channel_name" translatable="false">Сообщения</string>
+    <string name="msg_channel_description" translatable="false">Входящие сообщения</string>
+    <string name="service_notification_title" translatable="false">MeshCourier</string>
+    <string name="service_notification_text" translatable="false">Mesh-сеть активна</string>
+    <string name="service_notification_stop" translatable="false">Остановить</string>
+    <string name="msg_notification_default" translatable="false">Новое сообщение</string>
+    <string name="msg_notification_image" translatable="false">📷 %1$s</string>
+    <string name="msg_notification_file" translatable="false">📎 %1$s</string>
 </resources>
