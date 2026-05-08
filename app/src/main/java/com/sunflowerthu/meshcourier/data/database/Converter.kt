@@ -1,15 +1,13 @@
 package com.sunflowerthu.meshcourier.data.database
 
-import Message
 import androidx.room.TypeConverter
-import com.sunflowerthu.meshcourier.data.database.entities.MessageEntity
+import com.sunflowerthu.meshcourier.domain.models.MessageStatus
+import com.sunflowerthu.meshcourier.domain.models.PacketType
 
 class Converter {
-    @TypeConverter
-    fun messageToEntity(message: Message): MessageEntity {
-        return MessageEntity(message.id, message.receiverNodeId,
-            message.senderNodeId, message.content,
-            message.ttl, message.hopCount, message.timestamp,
-            message.status.toString())
-    }
+    @TypeConverter fun fromMessageStatus(v: MessageStatus): String = v.name
+    @TypeConverter fun toMessageStatus(v: String): MessageStatus = MessageStatus.valueOf(v)
+
+    @TypeConverter fun fromPacketType(v: PacketType): String = v.name
+    @TypeConverter fun toPacketType(v: String): PacketType = PacketType.valueOf(v)
 }

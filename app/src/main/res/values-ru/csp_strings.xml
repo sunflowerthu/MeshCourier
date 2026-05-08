@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Переопределения строк из csp-gui.aar (КриптоПро JCSP).
+-->
+<resources>
+    <string name="CompanyName">MeshCourier</string>
+    <string name="UserActionRequired">Нужно ваше действие</string>
+
+    <!-- Биодатчик случайных чисел -->
+    <string name="BioRnd">Создаём ваш ключ. Поводите пальцем по экрану, пока он не будет готов.</string>
+
+    <!-- Аутентификация / пароль -->
+    <string name="Authentication">Защита ключа</string>
+    <string name="Container">Хранилище ключей</string>
+    <string name="Password">Пароль</string>
+    <string name="EnterPassword">Введите пароль</string>
+    <string name="RequestNewPassword">просит придумать пароль для защиты вашего ключа</string>
+    <string name="RequestPassword">просит ввести пароль от вашего ключа</string>
+    <string name="Confirm">Подтвердите</string>
+    <string name="WrongPassword">Неправильный пароль. Попробуйте ещё раз.</string>
+    <string name="InvalidPassword">Пароль слишком короткий или содержит недопустимые символы.</string>
+    <string name="AttemptLeft">Попыток осталось: %d</string>
+
+    <!-- Кнопки -->
+    <string name="Cancel">Отмена</string>
+    <string name="Ok">Готово</string>
+</resources>

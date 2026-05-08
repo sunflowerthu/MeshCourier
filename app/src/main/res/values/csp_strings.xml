@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Дефолтные (fallback) переопределения строк JCSP CSPDialog.
+  Используются на устройствах с локалью отличной от ru.
+-->
+<resources>
+    <string name="CompanyName">MeshCourier</string>
+    <string name="UserActionRequired">Action required</string>
+
+    <string name="BioRnd">Generating your key. Move your finger across the screen until it is ready.</string>
+
+    <string name="Authentication">Key protection</string>
+    <string name="Container">Key storage</string>
+    <string name="Password">Password</string>
+    <string name="EnterPassword">Enter password</string>
+    <string name="RequestNewPassword">asks you to set a password to protect your key</string>
+    <string name="RequestPassword">asks for the password to your key</string>
+    <string name="Confirm">Confirm</string>
+    <string name="WrongPassword">Wrong password. Please try again.</string>
+    <string name="InvalidPassword">Password is too short or contains invalid characters.</string>
+    <string name="AttemptLeft">Attempts left: %d</string>
+
+    <string name="Cancel">Cancel</string>
+    <string name="Ok">Done</string>
+</resources>
