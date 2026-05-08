@@ -16,11 +16,12 @@ class SendKeyExchangeUseCase @Inject constructor(
     private val packetQueue: PacketQueue,
     private val nodeIdentity: NodeIdentity
 ) {
+    class OwnKeyPairMissing : IllegalStateException("Own key pair has not been generated")
+
     suspend fun execute(recipientNodeId: NodeId) {
+        if (!cryptoManager.hasOwnKeyPair()) throw OwnKeyPairMissing()
+
         val publicKeyBytes = withContext(Dispatchers.Default) {
-            if (!cryptoManager.hasOwnKeyPair()) {
-                cryptoManager.generateOwnKeyPair()
-            }
             cryptoManager.getPublicKeyEncoded()
         }
 

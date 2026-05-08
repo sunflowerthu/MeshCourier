@@ -40,6 +40,8 @@
     <string name="chat_encrypted_cd" translatable="false">Зашифровано</string>
     <string name="chat_exchange_keys_cd" translatable="false">Обменяться ключами</string>
     <string name="chat_unencrypted_warning" translatable="false">Сообщения не зашифрованы — нажмите на замок, чтобы обменяться ключами</string>
+    <string name="chat_toast_encrypted" translatable="false">Сообщения зашифрованы</string>
+    <string name="chat_toast_not_encrypted" translatable="false">Сообщения не зашифрованы</string>
     <string name="chat_message_placeholder" translatable="false">Сообщение</string>
     <string name="chat_send_cd" translatable="false">Отправить</string>
     <string name="chat_attach_file_cd" translatable="false">Прикрепить файл</string>
@@ -52,6 +54,7 @@
     <!-- Snackbar -->
     <string name="chat_event_keys_request_sent" translatable="false">Запрос на обмен ключами отправлен</string>
     <string name="chat_event_keys_request_failed" translatable="false">Не удалось отправить запрос: %1$s</string>
+    <string name="chat_event_no_own_keys" translatable="false">Сначала сгенерируйте ключи в настройках</string>
     <string name="chat_event_file_too_large" translatable="false">Файл слишком большой (максимум %1$d КБ)</string>
     <string name="chat_event_file_send_error" translatable="false">Ошибка отправки файла: %1$s</string>
     <string name="chat_event_file_read_error" translatable="false">Не удалось прочитать файл</string>

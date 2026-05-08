@@ -12,6 +12,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sunflowerthu.meshcourier.R
+import com.sunflowerthu.meshcourier.domain.crypto.CryptoManager
 import com.sunflowerthu.meshcourier.domain.models.Message
 import com.sunflowerthu.meshcourier.domain.models.MessageStatus
 import com.sunflowerthu.meshcourier.domain.models.NodeId
@@ -46,6 +47,7 @@ class ChatViewModel @Inject constructor(
     getOwnNodeIdUseCase: GetOwnNodeIdUseCase,
     private val sendMessageUseCase: SendMessageUseCase,
     private val sendKeyExchangeUseCase: SendKeyExchangeUseCase,
+    private val cryptoManager: CryptoManager,
     @ApplicationContext private val context: Context,
 ) : ViewModel() {
 
@@ -70,8 +72,10 @@ class ChatViewModel @Inject constructor(
         viewModelScope.launch {
             runCatching { messageRepository.markConversationRead(myNodeId, contactNodeId) }
         }
-        viewModelScope.launch {
-            runCatching { sendKeyExchangeUseCase.execute(contactNodeId) }
+        if (cryptoManager.hasOwnKeyPair()) {
+            viewModelScope.launch {
+                runCatching { sendKeyExchangeUseCase.execute(contactNodeId) }
+            }
         }
     }
 
@@ -95,6 +99,10 @@ class ChatViewModel @Inject constructor(
     }
 
     fun sendKeyExchange() {
+        if (!cryptoManager.hasOwnKeyPair()) {
+            _events.tryEmit(context.getString(R.string.chat_event_no_own_keys))
+            return
+        }
         viewModelScope.launch {
             runCatching { sendKeyExchangeUseCase.execute(contactNodeId) }
                 .onSuccess { _events.tryEmit(context.getString(R.string.chat_event_keys_request_sent)) }

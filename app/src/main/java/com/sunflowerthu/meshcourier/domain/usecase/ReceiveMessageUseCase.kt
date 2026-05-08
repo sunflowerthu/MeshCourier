@@ -92,13 +92,13 @@ class ReceiveMessageUseCase @Inject constructor(
         runCatching {
             cryptoManager.importPeerPublicKey(packet.senderNodeId, packet.payloadChunk)
         }
+        if (!cryptoManager.hasOwnKeyPair()) return
         if (keyExchangeRespondedTo.add(packet.senderNodeId)) {
             sendOwnKeyExchange(packet.senderNodeId)
         }
     }
 
     private fun sendOwnKeyExchange(recipientId: NodeId) {
-        if (!cryptoManager.hasOwnKeyPair()) cryptoManager.generateOwnKeyPair()
         runCatching {
             val keyPacket = Packet(
                 packetId = UUID.randomUUID(),

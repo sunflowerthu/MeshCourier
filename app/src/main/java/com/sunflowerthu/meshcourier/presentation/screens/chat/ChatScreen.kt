@@ -1,6 +1,7 @@
 package com.sunflowerthu.meshcourier.presentation.screens.chat
 
 import android.graphics.BitmapFactory
+import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
@@ -61,6 +62,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -84,6 +86,7 @@ fun ChatScreen(
     val messages by viewModel.messages.collectAsStateWithLifecycle()
     val encryptionAvailable by viewModel.encryptionAvailable.collectAsStateWithLifecycle()
     val contactName by viewModel.contactName.collectAsStateWithLifecycle()
+    val context = LocalContext.current
     val listState = rememberLazyListState()
     val snackbarHostState = remember { SnackbarHostState() }
     var inputText by remember { mutableStateOf("") }
@@ -159,7 +162,14 @@ fun ChatScreen(
                         Icon(Icons.Default.Edit, contentDescription = stringResource(R.string.chat_rename_cd))
                     }
                     IconButton(
-                        onClick = { if (!encryptionAvailable) viewModel.sendKeyExchange() },
+                        onClick = {
+                            val toastResId = if (encryptionAvailable)
+                                R.string.chat_toast_encrypted
+                            else
+                                R.string.chat_toast_not_encrypted
+                            Toast.makeText(context, toastResId, Toast.LENGTH_SHORT).show()
+                            if (!encryptionAvailable) viewModel.sendKeyExchange()
+                        },
                         modifier = Modifier.padding(end = 4.dp)
                     ) {
                         Icon(
