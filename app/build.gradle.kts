@@ -3,15 +3,22 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     id("com.google.devtools.ksp")
+    alias(libs.plugins.hilt.android)
 }
 
 android {
     namespace = "com.sunflowerthu.meshcourier"
     compileSdk = 36
 
+    sourceSets {
+        getByName("main") {
+            jniLibs.srcDirs("libs")
+        }
+    }
+
     defaultConfig {
         applicationId = "com.sunflowerthu.meshcourier"
-        minSdk = 24
+        minSdk = 29
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
@@ -38,11 +45,33 @@ android {
     buildFeatures {
         compose = true
     }
+    packaging {
+        resources.excludes += "META-INF/versions/9/OSGI-INF/MANIFEST.MF"
+    }
 }
 
 dependencies {
+    implementation(fileTree("libs") { include("*.aar", "*.jar") })
+    implementation(libs.material)
+    implementation(libs.ini4j)
+    implementation(libs.bcpkix.jdk18on)
+    // Требуется csp-gui.aar (JCSP CSPDialog) — без неё native CSPDialog.showActivity()
+    // падает с NoClassDefFoundError при любой операции с приватным ключом.
+    implementation(libs.androidx.localbroadcastmanager)
+
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
+
+    implementation(libs.zxing.core)
+    implementation(libs.zxing.android)
+
+    implementation(libs.hilt.navigation.compose)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.material.icons.extended)
+
     implementation(libs.androidx.room.runtime)
-    annotationProcessor(libs.androidx.room.compiler)
+    ksp(libs.androidx.room.compiler)
 
     implementation(libs.androidx.room.ktx)
     testImplementation(libs.androidx.room.testing)
