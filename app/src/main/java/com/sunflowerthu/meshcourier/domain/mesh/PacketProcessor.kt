@@ -15,14 +15,11 @@ class PacketProcessor(
      * что с ним нужно сделать.
      */
     fun process(packet: Packet): PacketAction {
-
-        // Дедупликация
         if (seenPacketCache.hasSeen(packet.packetId)) {
             return PacketAction.Drop
         }
         seenPacketCache.markSeen(packet.packetId)
 
-        // Если пакет адресован мне или всем (broadcast)
         if (packet.receiverNodeId == myNodeId || packet.receiverNodeId == BROADCAST) {
             return when (packet.packetType) {
                 PacketType.MESSAGE,
@@ -34,12 +31,10 @@ class PacketProcessor(
             }
         }
 
-        // Если TTL истёк — дроп
         if (packet.ttl <= 0) {
             return PacketAction.Drop
         }
 
-        // Ретрансляция
         return PacketAction.Forward(packet.forwarded())
     }
 }
