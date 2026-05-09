@@ -8,11 +8,13 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.lifecycle.lifecycleScope
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Scaffold
@@ -25,14 +27,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.sunflowerthu.meshcourier.data.crypto.CspInitializer
 import com.sunflowerthu.meshcourier.data.mesh.BleMeshService
+import com.sunflowerthu.meshcourier.domain.crypto.CryptoManager
 import com.sunflowerthu.meshcourier.presentation.navigation.AppNavHost
 import com.sunflowerthu.meshcourier.presentation.navigation.BottomBar
 import com.sunflowerthu.meshcourier.presentation.navigation.Screen
 import com.sunflowerthu.meshcourier.presentation.theme.MeshCourierTheme
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.filterNotNull
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 private data class ErrorState(
     val message: String,
@@ -42,6 +50,9 @@ private data class ErrorState(
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    @Inject
+    lateinit var cryptoManager: CryptoManager
 
     private val _chatTarget = MutableStateFlow<String?>(null)
     private val _errorState = MutableStateFlow<ErrorState?>(null)
@@ -89,6 +100,7 @@ class MainActivity : ComponentActivity() {
                 }
             )
         } else {
+            generateKeysIfNeeded()
             requestEnableBluetoothOrStart()
         }
     }
@@ -213,6 +225,7 @@ class MainActivity : ComponentActivity() {
         }
 
         if (allGranted) {
+            generateKeysIfNeeded()
             requestEnableBluetoothOrStart()
         } else {
             permissionLauncher.launch(permissions)
@@ -233,7 +246,25 @@ class MainActivity : ComponentActivity() {
         startForegroundService(Intent(this, BleMeshService::class.java))
     }
 
+    private fun generateKeysIfNeeded() {
+        if (cryptoManager.hasOwnKeyPair()) return
+        lifecycleScope.launch(Dispatchers.Default) {
+            // Wait for CSP to finish initializing (started async in Application.onCreate)
+            repeat(20) {
+                if (CspInitializer.initialized) return@repeat
+                delay(250)
+            }
+            if (!CspInitializer.initialized) {
+                Log.e(TAG, "CSP not ready, skipping auto key generation")
+                return@launch
+            }
+            runCatching { cryptoManager.generateOwnKeyPair() }
+                .onFailure { Log.e(TAG, "Auto key generation failed", it) }
+        }
+    }
+
     companion object {
+        private const val TAG = "MainActivity"
         const val EXTRA_CONTACT_NODE_ID = "contact_node_id"
     }
 }
