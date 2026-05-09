@@ -54,10 +54,8 @@ class CryptoManagerImpl @Inject constructor(
         KeyStore.getInstance(KEY_STORE_TYPE, JCSP.PROVIDER_NAME).also { it.load(null, null) }
     }
 
-    // Кэшируем приватный ключ в памяти
     @Volatile private var cachedPrivateKey: java.security.PrivateKey? = null
 
-    // заполняется из БД при вызове loadPersistedKeys()
     private val peerPublicKeys = mutableMapOf<NodeId, PublicKey>()
 
     override suspend fun loadPersistedKeys() {

@@ -32,7 +32,6 @@ class SettingsViewModel @Inject constructor(
     private val _keyGenError = MutableStateFlow<String?>(null)
     val keyGenError = _keyGenError.asStateFlow()
 
-    // QR содержит nodeId|base64(publicKey) если ключи есть, иначе только nodeId
     val qrContent = _hasKeyPair.map { hasKey ->
         if (hasKey) {
             runCatching {

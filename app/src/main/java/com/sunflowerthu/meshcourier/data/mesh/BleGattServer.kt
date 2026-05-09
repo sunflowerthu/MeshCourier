@@ -42,7 +42,6 @@ class BleGattServer(
         gattServer.addService(service)
     }
 
-    // Этот callback передаётся в bluetoothManager.openGattServer(context, callback)
     val callback = object : BluetoothGattServerCallback() {
 
         @RequiresPermission(Manifest.permission.BLUETOOTH_CONNECT)

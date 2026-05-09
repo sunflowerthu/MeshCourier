@@ -8,7 +8,8 @@ import java.security.Security
 object CspInitializer {
 
     @Volatile
-    private var initialized = false
+    var initialized = false
+        private set
 
     fun init(context: Context): Boolean {
         if (initialized) return true

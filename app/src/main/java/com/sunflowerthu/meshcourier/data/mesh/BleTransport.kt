@@ -72,7 +72,6 @@ class BleTransport(private val context: Context) {
                         if (chunkIndex < chunks.size) {
                             writeChunk(g, chunks[chunkIndex])
                         } else {
-                            // Все чанки отправлены — успех
                             cont.resume(true)
                             g.disconnect()
                         }
@@ -114,11 +113,9 @@ class BleTransport(private val context: Context) {
         private const val CONNECTION_TIMEOUT_MS = 8_000L
         private const val CHUNK_TIMEOUT_MS = 80L
 
-        // Разбивает байты пакета на BLE-чанки
         fun ByteArray.toChunks(): List<ByteArray> {
             val chunks = mutableListOf<ByteArray>()
 
-            // Первый чанк: 2 байта длины + данные
             val firstDataSize = minOf(GattProtocol.MAX_CHUNK_SIZE, size)
             val firstChunk = ByteBuffer.allocate(GattProtocol.HEADER_SIZE + firstDataSize)
                 .putShort(size.toShort())
@@ -126,7 +123,6 @@ class BleTransport(private val context: Context) {
                 .array()
             chunks.add(firstChunk)
 
-            // Остальные чанки: просто данные
             var offset = firstDataSize
             while (offset < size) {
                 val end = minOf(offset + GattProtocol.DEFAULT_MTU, size)

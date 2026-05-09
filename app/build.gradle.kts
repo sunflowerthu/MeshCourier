@@ -60,8 +60,6 @@ dependencies {
     implementation(libs.material)
     implementation(libs.ini4j)
     implementation(libs.bcpkix.jdk18on)
-    // Требуется csp-gui.aar (JCSP CSPDialog) — без неё native CSPDialog.showActivity()
-    // падает с NoClassDefFoundError при любой операции с приватным ключом.
     implementation(libs.androidx.localbroadcastmanager)
 
     implementation(libs.hilt.android)

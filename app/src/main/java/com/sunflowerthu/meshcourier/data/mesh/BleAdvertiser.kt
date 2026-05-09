@@ -17,8 +17,6 @@ class BleAdvertiser(
 
     @RequiresPermission(Manifest.permission.BLUETOOTH_ADVERTISE)
     fun start() {
-        // BALANCED - потому что интервал адвертайзинга примерно 250мс,
-        // с LOW_POWER - долго отправляются сообщения, долго поялвяются узлы в экране "Рядом"
         val settings = AdvertiseSettings.Builder()
             .setAdvertiseMode(AdvertiseSettings.ADVERTISE_MODE_BALANCED)
             .setConnectable(true)
@@ -37,7 +35,6 @@ class BleAdvertiser(
         advertiser.stopAdvertising(callback)
     }
 
-    // Первые 8 байт хэша nodeId — чтобы при сканировании грубо различать узлы
     private fun nodeIdToBytes(): ByteArray =
         ByteBuffer.allocate(8).putLong(nodeId.value.hashCode().toLong()).array()
 
