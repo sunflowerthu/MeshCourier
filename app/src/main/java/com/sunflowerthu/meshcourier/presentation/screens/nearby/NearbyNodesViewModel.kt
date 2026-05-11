@@ -2,6 +2,7 @@ package com.sunflowerthu.meshcourier.presentation.screens.nearby
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.sunflowerthu.meshcourier.domain.crypto.CryptoManager
 import com.sunflowerthu.meshcourier.domain.repository.ContactRepository
 import com.sunflowerthu.meshcourier.domain.repository.NearbyNodesRepository
 import com.sunflowerthu.meshcourier.domain.repository.PeerKeyRepository
@@ -33,6 +34,7 @@ class NearbyNodesViewModel @Inject constructor(
     contactRepository: ContactRepository,
     peerKeyRepository: PeerKeyRepository,
     private val sendKeyExchangeUseCase: SendKeyExchangeUseCase,
+    private val cryptoManager: CryptoManager,
 ) : ViewModel() {
 
     val nodeItems = combine(
@@ -58,6 +60,8 @@ class NearbyNodesViewModel @Inject constructor(
     ) { nodes, sent, relayed ->
         MeshStats(activeNodes = nodes.size, packetsSent = sent, packetsRelayed = relayed)
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), MeshStats(0, 0, 0))
+
+    fun hasOwnKeyPair(): Boolean = cryptoManager.hasOwnKeyPair()
 
     fun sendKeyExchange(nodeId: NodeId) {
         viewModelScope.launch {

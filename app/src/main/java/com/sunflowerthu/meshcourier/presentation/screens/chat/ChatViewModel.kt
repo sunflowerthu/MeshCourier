@@ -60,7 +60,6 @@ class ChatViewModel @Inject constructor(
     val contactName = contactRepository.observeDisplayName(contactNodeId)
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
 
-    // Реактивно переключается в true когда приходит ответный ключ от собеседника
     val encryptionAvailable = peerKeyRepository.observeKnownNodeIds()
         .map { contactNodeId in it }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), false)
