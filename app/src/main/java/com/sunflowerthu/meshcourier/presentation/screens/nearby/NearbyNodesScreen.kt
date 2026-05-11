@@ -1,5 +1,6 @@
 package com.sunflowerthu.meshcourier.presentation.screens.nearby
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -27,6 +28,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -41,6 +43,8 @@ fun NearbyNodesScreen(
 ) {
     val nodeItems by viewModel.nodeItems.collectAsStateWithLifecycle()
     val stats by viewModel.stats.collectAsStateWithLifecycle()
+    val context = LocalContext.current
+    val noKeysText = stringResource(R.string.chat_event_no_own_keys)
 
     Scaffold(
         contentWindowInsets = WindowInsets(0),
@@ -81,7 +85,13 @@ fun NearbyNodesScreen(
                     items(nodeItems, key = { it.nodeId.value }) { item ->
                         NearbyNodeRow(
                             item = item,
-                            onExchangeKeys = { viewModel.sendKeyExchange(item.nodeId) },
+                            onExchangeKeys = {
+                                if (viewModel.hasOwnKeyPair()) {
+                                    viewModel.sendKeyExchange(item.nodeId)
+                                } else {
+                                    Toast.makeText(context, noKeysText, Toast.LENGTH_SHORT).show()
+                                }
+                            },
                             onOpenChat = { onOpenChat(item.nodeId.value) }
                         )
                         HorizontalDivider()

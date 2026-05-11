@@ -1,6 +1,7 @@
 package com.sunflowerthu.meshcourier.presentation.screens.conversations
 
 import android.app.Activity
+import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
@@ -82,15 +83,23 @@ fun ConversationsScreen(
     var showNewChatDialog by remember { mutableStateOf(false) }
     val snackbarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
+    val context = LocalContext.current
 
     val invalidQrText = stringResource(R.string.conversations_invalid_qr)
+    val noKeysText = stringResource(R.string.chat_event_no_own_keys)
 
     Scaffold(
         contentWindowInsets = WindowInsets(0),
         snackbarHost = { SnackbarHost(snackbarHostState) },
         topBar = { TopAppBar(title = { Text(stringResource(R.string.conversations_title)) }) },
         floatingActionButton = {
-            FloatingActionButton(onClick = { showNewChatDialog = true }) {
+            FloatingActionButton(onClick = {
+                if (viewModel.hasOwnKeyPair()) {
+                    showNewChatDialog = true
+                } else {
+                    Toast.makeText(context, noKeysText, Toast.LENGTH_SHORT).show()
+                }
+            }) {
                 Icon(Icons.Default.Add, contentDescription = stringResource(R.string.conversations_new_chat_cd))
             }
         }

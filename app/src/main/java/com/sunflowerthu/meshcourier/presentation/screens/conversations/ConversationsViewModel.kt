@@ -48,6 +48,8 @@ class ConversationsViewModel @Inject constructor(
      * Парсит QR-строку формата "<nodeId>|<base64Key>" или просто "<nodeId>".
      * Если ключ присутствует — импортирует его. Возвращает Node ID или null при невалидном QR.
      */
+    fun hasOwnKeyPair(): Boolean = cryptoManager.hasOwnKeyPair()
+
     fun parseAndImportQr(qrContent: String): String? {
         val parts = qrContent.trim().split("|", limit = 2)
         val nodeId = parts[0].trim()
